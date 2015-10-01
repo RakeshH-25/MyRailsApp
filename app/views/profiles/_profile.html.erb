@@ -10,23 +10,23 @@
       <h1>My Profile Details</h1>
 
       <span class="pull-right">
-        <%= link_to 'Edit Profile', edit_profile_path(@user) %>
+        <%= link_to 'Edit Profile', edit_profile_path(@current_user) %>
       </span>
     </div>
     <div class="row">
-  <div class="col-md-2">
-    <label>Name</label><br>
-    <label>E-mail</label><br>
-    <label>Contact</label><br>
-    <label>Address</label><br>
-  </div>
-  <div class="col-md-10" style="font-size: 18px;">
-    <%= profile.name %><br>
-    <%= @user.email %><br>
-    <%= profile.contact_no %><br>
-    <%= profile.address %><br>
-  </div>
-</div>
+      <div class="col-md-2">
+        <label>Name</label><br>
+        <label>E-mail</label><br>
+        <label>Contact</label><br>
+        <label>Address</label><br>
+      </div>
+      <div class="col-md-10" style="font-size: 18px;">
+        <%= @current_user.profile.name %><br>
+        <%= @current_user.email %><br>
+        <%= @current_user.profile.contact_no %><br>
+        <%= @current_user.profile.address %><br>
+      </div>
+    </div>
   </div>
 </div>
 

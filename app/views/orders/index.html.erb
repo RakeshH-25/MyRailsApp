@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Listing Orders</h1>
+<h1><%=pluralize(@orders.count,"Order")%> in total</h1>
+<h3>Listing Orders</h3>
 
 <table>
   <thead>
@@ -34,4 +34,3 @@
 
 <br>
 
-<%= link_to 'New Order', new_order_path %>

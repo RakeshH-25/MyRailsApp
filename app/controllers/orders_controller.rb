@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   include CurrentCart
   before_action :set_cart, :current_user, only: [:new, :create]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-
+  before_action :require_admin_login, only: [:index]
   # GET /orders
   # GET /orders.json
   def index
@@ -36,7 +36,7 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if @order.save
         session[:cart_id] = nil
-        format.html { redirect_to profile_path, notice: 'Order was successfully created.' }
+        format.html { redirect_to profile_path(@current_user), notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }

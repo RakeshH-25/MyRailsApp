@@ -1,7 +1,8 @@
 class DepartmentsController < ApplicationController
   before_action :set_department, only: [:show, :edit, :update, :destroy]
-  before_action :set_department_list, only: [:index, :show]
+  before_action :set_department_list, only: [:show]
   before_action :set_cart, only: [:index, :show]
+  before_action :require_admin_login, only: [:new, :create,:destroy, :edit, :update]
 
   # GET /departments
   # GET /departments.json
@@ -66,10 +67,6 @@ class DepartmentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_department
       @department = Department.find(params[:id])
-    end
-
-    def set_department_list
-      @departments = Department.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

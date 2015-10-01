@@ -7,3 +7,5 @@ Product.create(image: 'moto_e.png', title: 'Moto E', description: 'some descript
 Product.create(image: 'intex.png', title: 'Intex', description: 'some description about the product', price: 7000.00, active: true, department_id: 1)
 Product.create(image: 'lenovo.png', title: 'Lenovo', description: 'some description about the product', price: 27000.00, active: true, department_id: 2)
 Product.create(image: 'samsung_hs.png', title: 'Samsung Headset', description: 'some description about the product', price: 700.00, active: true, department_id: 3)
+
+Admin.create(email: 'iamraks25@gmail.com', password: 'password', password_confirmation: 'password')

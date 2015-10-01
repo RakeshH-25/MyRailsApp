@@ -17,7 +17,10 @@
       </div>
       <div class="nav navbar-nav navbar-right">
         <% if @current_user %>
-          <span>Hello <%=@current_user.profile.name%></span> |
+          <span>Hello <%=@current_user.profile.name if @current_user.profile%></span> |
+          <%= link_to "Log out", log_out_path %>
+        <% elsif session[:admin] %>
+          <%= session[:admin_id] %> 
           <%= link_to "Log out", log_out_path %>
         <% else %>
           <%= link_to "Log in", log_in_path %> 
@@ -35,6 +38,15 @@
     <%if @departments%>
       <h3>Departments</h3>
       <%= render @departments %>
+    <%end%>
+    <% if session[:admin]%>
+      <hr>
+      <h4>Admin controls</h4>
+      <hr>
+      <%= link_to 'Add New Admin', new_admin_path %><br>
+      <%= link_to 'Departments', departments_path %><br>
+      <%= link_to 'Orders', orders_path %><br>
+      <hr>
     <%end%>
     </div>
     <div class="col-md-8">
