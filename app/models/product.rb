@@ -1,7 +1,6 @@
 class Product < ActiveRecord::Base
   belongs_to :department
   has_many :line_items
-
   before_destroy :ensure_not_referenced_by_any_line_item
 
   validates :title, :description, :image, presence: true

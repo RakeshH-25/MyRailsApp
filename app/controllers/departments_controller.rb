@@ -2,7 +2,7 @@ class DepartmentsController < ApplicationController
   before_action :set_department, only: [:show, :edit, :update, :destroy]
   before_action :set_department_list, only: [:show]
   before_action :set_cart, only: [:index, :show]
-  before_action :require_admin_login, only: [:new, :create,:destroy, :edit, :update]
+  before_action :require_admin_login, only: [:index, :new, :create,:destroy, :edit, :update]
 
   # GET /departments
   # GET /departments.json

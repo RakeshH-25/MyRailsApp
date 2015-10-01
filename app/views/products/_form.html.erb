@@ -13,29 +13,29 @@
 
   <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, :class => "form-control" %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_field :description %>
+    <%= f.text_area :description, :class => "form-control" %>
   </div>
   <div class="field">
     <%= f.label :image %><br>
-    <%= f.text_field :image %>
+    <%= f.text_field :image, :class => "form-control" %>
   </div>
   <div class="field">
     <%= f.label :price %><br>
-    <%= f.text_field :price %>
+    <%= f.text_field :price, :class => "form-control" %>
   </div>
   <div class="field">
-    <%= f.label :active %><br>
+    <%= f.label :active %>
     <%= f.check_box :active %>
   </div>
   <div class="field">
-    <%= f.label :department_id %><br>
-    <%= f.text_field :department_id %>
+    <%= f.label :department_id %>
+    <%= f.select :department_id, Department.all.collect { |e| [e.name, e.id] }, prompt: 'Select a department' %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => "form-control btn-success" %>
   </div>
 <% end %>
