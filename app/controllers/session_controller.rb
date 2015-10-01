@@ -14,7 +14,7 @@ class SessionController < ApplicationController
     elsif @admin
       session[:admin]    = true
       session[:admin_id] = @admin.email
-      redirect_to admins_path, :notice => "Welcome Admin"
+      redirect_to orders_path, :notice => "Welcome Admin"
     else
       flash.now.alert = "Invalid email or password"
       render "new"
