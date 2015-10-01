@@ -1,11 +1,13 @@
 class SessionController < ApplicationController
-   after_action :set_cart, only: [:create]
+   after_action :current_user, only: [:create]
   def new
   end
 
   def create
     @user = User.authenticate(params[:email], params[:password])
     if @user
+      session[:user_id] = @user.id
+      session[:user_name] = @user.profile.name
       redirect_to departments_path, :notice => "Welcome "+session[:user_name]
     else
       flash.now.alert = "Invalid email or password"

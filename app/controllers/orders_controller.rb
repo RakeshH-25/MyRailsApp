@@ -36,7 +36,7 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if @order.save
         session[:cart_id] = nil
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
+        format.html { redirect_to profile_path, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }
