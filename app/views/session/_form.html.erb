@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-md-8">
+    <img src="<%= asset_path( 'eshop.png' ) %>" style="width:100%;height:400px">
+  </div>
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="page-header">
+          <h1>Login</h1>
+        </div>
+        <span class="alert">
+          <div class="alert-danger">
+            <% flash.each do |name, msg| %>
+              <%= content_tag :span, msg, :id => "flash_#{name}" %>
+            <% end %>
+          </div>
+        </span>
+        <%= form_tag sessions_path do %>
+          <p>
+            <%= label_tag :email %><strong>/Username</strong><br />
+            <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+            <%= text_field_tag :email, params[:email], :class => "form-control", required: true%>
+            </div>
+          </p>
+          <p>
+            <%= label_tag :password %><br />
+            <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-star"></span></span>
+            <%= password_field_tag :password,params[:password], :class => "form-control",required: true%>
+            </div>
+          </p>
+          <hr>
+          <%= button_tag(type: 'submit', class: "btn btn-primary pull-right") do %>
+           <i class="glyphicon glyphicon-lock"></i> Login
+          <% end %>
+          <label>Not Registered?</label><%= link_to "Sign up", sign_up_path %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

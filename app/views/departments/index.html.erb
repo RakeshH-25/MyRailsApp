@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<% content_for :head do %>
+  <% if session[:user_id] %>
+    <li><%= link_to 'My Profile', user_path(User.find(session[:user_id])) %></li>
+  <% end %>
+<%end%>
+
+<div class="row">
+  
+    <h2 align="center">
+      Promoted Products goes here...
+    </h2>
+  
+</div>
