@@ -27,6 +27,12 @@
         <%= @current_user.profile.address %><br>
       </div>
     </div>
+    <hr>
+    <div>
+      <h3>Your orders</h3>
+      (<%= pluralize(@current_user.orders.count,"Order")%> in total)<br>
+      <%= render @current_user.orders %>
+    </div>
   </div>
 </div>
 

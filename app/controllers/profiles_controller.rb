@@ -30,7 +30,7 @@ class ProfilesController < ApplicationController
     respond_to do |format|
       if @profile.save
         session[:user_name] = @profile.name 
-        format.html { redirect_to departments_path, notice: 'Profile was successfully saved.' }
+        format.html { redirect_to store_index_path, notice: 'Profile was successfully saved.' }
         format.json { render :show, status: :created, location: @profile }
       else
         format.html { render :new }

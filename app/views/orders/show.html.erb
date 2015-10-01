@@ -1,28 +1,43 @@
-<p id="notice"><%= notice %></p>
+<div class="col-md-3">
+</div>
+<div class="col-md-6">
+  <div class="panel panel-default">
+  <div class="panel-body">
+    <div class="page-header">
+      <h1>Order Summary</h1>
+    </div>
+    <p>
+      <strong>Name:</strong>
+      <%= @order.name %>
+    </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @order.name %>
-</p>
+    <p>
+      <strong>Email:</strong>
+      <%= @order.email %>
+    </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @order.email %>
-</p>
+    <p>
+      <strong>Contact no:</strong>
+      <%= @order.contact_no %>
+    </p>
 
-<p>
-  <strong>Contact no:</strong>
-  <%= @order.contact_no %>
-</p>
+    <p>
+      <strong>Pay type:</strong>
+      <%= @order.pay_type %>
+    </p>
 
-<p>
-  <strong>Pay type:</strong>
-  <%= @order.pay_type %>
-</p>
+    <p>
+      <strong>Address:</strong>
+      <%= @order.address %>
+    </p>
+    <hr>
+    <h4>Order Items</h4>
+    <hr>
+    <%= render @order.line_items %>
 
-<p>
-  <strong>Address:</strong>
-  <%= @order.address %>
-</p>
+  </div>
+  </div>
+</div>
+<div class="col-md-3">
+</div>
 
-<%= render @order.line_items %>

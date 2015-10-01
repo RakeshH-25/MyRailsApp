@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
-  has_one :profile
-  has_one :cart
+  has_one  :profile
+  has_one  :cart
+  has_many :orders
 
   attr_accessor :password
   before_save :encrypt_password

@@ -76,9 +76,5 @@ class LineItemsController < ApplicationController
       params.require(:line_item).permit(:product_id)
     end
 
-    def require_login
-      unless session[:user_id]
-        redirect_to log_in_url, notice: "User,Please log in"
-      end
-    end
+    
 end
