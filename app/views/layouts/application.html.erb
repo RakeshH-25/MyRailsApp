@@ -35,15 +35,17 @@
   </div>
   <div class="row">
     <div class="col-md-2" id="department">
-    <%if @departments%>
-      <h3>Departments</h3>
-      <%= render @departments %>
+    <%if @departments %>
+      <% unless session[:admin] %>
+        <h3>Departments</h3>
+        <%= render @departments %>
+      <% end %>
     <%end%>
     <% if session[:admin]%>
       <hr>
       <h4>Admin controls</h4>
       <hr>
-      <%= link_to 'Add New Admin', new_admin_path %><br>
+      <%= link_to 'All Admins', admins_path %><br>
       <%= link_to 'Departments', departments_path %><br>
       <%= link_to 'Products', products_path %><br>
       <%= link_to 'Orders', orders_path %><br>

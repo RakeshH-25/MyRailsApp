@@ -1,8 +1,10 @@
 class OrdersController < ApplicationController
   include CurrentCart
   before_action :set_cart, :require_login , :current_user, only: [:new, :create]
-  before_action :set_order, :require_login , only: [:show, :edit, :update, :destroy]
+  before_action :set_order, :require_login, only: [:edit, :update, :destroy]
   before_action :require_admin_login, only: [:index]
+  before_action :set_order, :require_admin_or_user_login, only: [:show]
+
   # GET /orders
   # GET /orders.json
   def index
@@ -78,5 +80,15 @@ class OrdersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
       params.require(:order).permit(:name, :email, :contact_no, :pay_type, :address, :user_id)
+    end
+
+    def require_admin_or_user_login
+      if session[:admin]
+        return
+      elsif session[:user_id]
+        return
+      else
+        redirect_to log_in_path
+      end
     end
 end
