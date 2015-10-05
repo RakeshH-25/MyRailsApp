@@ -8,7 +8,13 @@
         <div class="page-header">
           <h1>Login</h1>
         </div>
-        
+        <span class="alert">
+          <div class="alert-danger">
+            <% flash.each do |name, msg| %>
+              <%= content_tag :span, msg, :id => "flash_#{name}" %>
+            <% end %>
+          </div>
+        </span>
         <%= form_tag sessions_path do %>
           <p>
             <%= label_tag :email %><strong>/Username</strong><br />

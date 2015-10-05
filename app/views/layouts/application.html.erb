@@ -34,25 +34,22 @@
     </ul>
   </div>
   <div class="row">
-    <div class="col-md-2" id="department">
-    <%if @departments %>
-      <% unless session[:admin] %>
-        <h3>Departments</h3>
-        <%= render @departments %>
-      <% end %>
-    <%end%>
-    <% if session[:admin]%>
-      <hr>
-      <h4>Admin controls</h4>
-      <hr>
-      <%= link_to 'All Admins', admins_path %><br>
-      <%= link_to 'Departments', departments_path %><br>
-      <%= link_to 'Products', products_path %><br>
-      <%= link_to 'Orders', orders_path %><br>
-      <hr>
-    <%end%>
+    <div class="col-md-2" id="left_col">
+      <% if session[:admin]%>
+        <hr>
+        <h4>Admin controls</h4>
+        <hr>
+        <%= link_to 'All Admins', admins_path %><br>
+        <%= link_to 'Departments', departments_path %><br>
+        <%= link_to 'Products', products_path %><br>
+        <%= link_to 'Orders', orders_path %><br>
+        <hr>
+      <%elsif @departments %>
+          <h3>Departments</h3>
+          <%= render @departments %>
+      <%end%>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-8" id="main_content">
       <%= yield %>
     </div>
     <div class="col-md-2" id="cart">

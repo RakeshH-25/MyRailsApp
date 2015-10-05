@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   before_action :set_cart, :require_login , :current_user, only: [:new, :create]
   before_action :set_order, :require_login, only: [:edit, :update, :destroy]
   before_action :require_admin_login, only: [:index]
-  before_action :set_order, :require_admin_or_user_login, only: [:show]
+  before_action :set_order, :current_user, :require_admin_or_user_login, only: [:show]
 
   # GET /orders
   # GET /orders.json

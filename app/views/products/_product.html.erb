@@ -6,7 +6,7 @@
   <%=product.description%><br>
   
   <% if product.active %>
-  <%= button_to 'Add to Cart', line_items_path(product_id: product),remote: true %>
+  <%= button_to 'Add to Cart', line_items_path(product_id: product),remote: true, :class => "btn btn-block btn-success" %>
   <% end %>
   <br><br>
 </div>
