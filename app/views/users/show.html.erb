@@ -1,0 +1,9 @@
+<%if @user.profile %>
+  <%= render @user.profile %>
+<%else%>
+  <h2>
+    Oops!! your profile is missing
+    <%= link_to " Click here ", new_profile_path(@user) %>
+    to set your profile
+  </h2>
+<%end%>

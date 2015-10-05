@@ -1,0 +1,20 @@
+<% content_for :head do %>
+  <% if session[:user_id] %>
+    <li><%= link_to 'Back', user_path(@current_user) %></li>
+  <% end %>
+<%end%>
+
+<div class="col-md-3">
+</div>
+<div class="col-md-6">
+  <div class="panel panel-default">
+  <div class="panel-body">
+    <div class="page-header">
+      <h1>Edit Profile</h1>
+    </div>
+    <%= render 'form' %>
+  </div>
+  </div>
+</div>
+<div class="col-md-3">
+</div>

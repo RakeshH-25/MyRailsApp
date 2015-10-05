@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MyEshop</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" %>
+  <%= javascript_include_tag "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="container-fluid">
+  <nav class="navbar">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="<%=root_url%>">e-SHOP</a>
+      </div>
+      <div class="nav navbar-nav navbar-right">
+        <% if @current_user %>
+          <span>Hello <%=@current_user.profile.name if @current_user.profile%></span> |
+          <%= link_to "Log out", log_out_path %>
+        <% elsif session[:admin] %>
+          <%= session[:admin_id] %> 
+          <%= link_to "Log out", log_out_path %>
+        <% else %>
+          <%= link_to "Log in", log_in_path %> 
+        <% end %>
+      </div>
+    </div>
+  </nav>
+  <div class="nav nav-tabs <%= controller.controller_name %>">
+    <ul class="nav navbar-nav pull-right">
+      <%= yield :head %>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="col-md-2" id="left_col">
+      <% if session[:admin]%>
+        <hr>
+        <h4>Admin controls</h4>
+        <hr>
+        <%= link_to 'All Admins', admins_path %><br>
+        <%= link_to 'Departments', departments_path %><br>
+        <%= link_to 'Products', products_path %><br>
+        <%= link_to 'Orders', orders_path %><br>
+        <hr>
+      <%elsif @departments %>
+          <h3>Departments</h3>
+          <%= render @departments %>
+      <%end%>
+    </div>
+    <div class="col-md-8" id="main_content">
+      <%= yield %>
+    </div>
+    <div class="col-md-2" id="cart">
+      <%= render @cart if @cart%>
+    </div>
+  </div>
+</div>
+<footer>
+    <!-- <h6>footer</h6> -->
+</footer>
+</body>
+</html>

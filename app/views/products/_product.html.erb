@@ -1,0 +1,12 @@
+ <div class="col-md-3" id="product">
+  
+  <%= link_to image_tag(product.image) , product_path(product.id)%><br>
+  <%=product.title%><br>
+  <%=product.price%><br>
+  <%=product.description%><br>
+  
+  <% if product.active %>
+  <%= button_to 'Add to Cart', line_items_path(product_id: product),remote: true, :class => "btn btn-block btn-success" %>
+  <% end %>
+  <br><br>
+</div>

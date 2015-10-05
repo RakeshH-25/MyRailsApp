@@ -1,0 +1,39 @@
+<% content_for :head do %>
+  <% if session[:user_id] %>
+    <li><%= link_to 'Home', root_url %></li>
+  <% end %>
+<%end%>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    
+      <h1>My Profile Details</h1>
+        <%= link_to 'Edit Profile', edit_profile_path(@current_user), :class => "pull-right btn btn-link" %>
+    <hr>
+
+    <div class="row">
+      <div class="col-md-2">
+        <label>Name</label><br>
+        <label>E-mail</label><br>
+        <label>Contact</label><br>
+        <label>Address</label><br>
+      </div>
+      <div class="col-md-10" style="font-size: 18px;">
+        <%= @current_user.profile.name %><br>
+        <%= @current_user.email %><br>
+        <%= @current_user.profile.contact_no %><br>
+        <%= @current_user.profile.address %><br>
+      </div>
+    </div>
+    <br>
+    <%= button_to 'Change Password', edit_user_path(@current_user),method: :get , :class => "btn btn-success" %>
+    <hr>
+    <div>
+      <h3>Your orders</h3>
+      (<%= pluralize(@current_user.orders.count,"Order")%> in total)<br>
+      <%= render @current_user.orders %>
+    </div>
+  </div>
+</div>
+
+
