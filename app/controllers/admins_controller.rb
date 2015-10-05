@@ -54,9 +54,14 @@ class AdminsController < ApplicationController
   # DELETE /admins/1
   # DELETE /admins/1.json
   def destroy
-    @admin.destroy
+    begin
+      @admin.destroy
+      flash[:notice] = "admin #{@admin.id} deleted"
+    rescue StandardError => e
+     flash[:notice] = e.message
+    end
     respond_to do |format|
-      format.html { redirect_to admins_url, notice: 'Admin was successfully destroyed.' }
+      format.html { redirect_to admins_url }
       format.json { head :no_content }
     end
   end

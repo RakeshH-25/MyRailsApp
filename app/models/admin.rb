@@ -1,6 +1,7 @@
 class Admin < ActiveRecord::Base
   attr_accessor :password
   before_save :encrypt_password
+  after_destroy :ensure_an_admin_remains
   
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create
@@ -24,4 +25,11 @@ class Admin < ActiveRecord::Base
       self.password_hash = BCrypt::Engine.hash_secret(password, passowrd_salt)
     end
   end
+
+  private
+    def ensure_an_admin_remains
+      if Admin.count.zero?
+      raise "Can't delete last Admin"
+      end
+    end
 end
